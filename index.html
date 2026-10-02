@@ -1,454 +1,164 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Ropa</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Tienda - Encuentra tu estilo</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f5f5f5;color:#222}
+header{background:#111;color:#fff;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+header.logo{font-weight:bold;font-size:18px}
+nav a{color:#fff;margin:0 10px;text-decoration:none;font-size:14px}
+.hero{background:#fff;margin:15px;border-radius:12px;display:flex;flex-wrap:wrap;overflow:hidden}
+.hero-left{flex:1;padding:30px;min-width:250px}
+.hero-left h1{font-size:26px;margin-bottom:10px}
+.hero-left button{background:#111;color:#fff;border:none;padding:10px 18px;border-radius:6px;cursor:pointer}
+.hero-right{flex:1;min-width:250px;background:#ffe4d6;display:flex;align-items:center;justify-content:center}
+.hero-right img{width:100%;max-width:400px;object-fit:cover}
+.section{margin:15px;background:#fff;padding:15px;border-radius:12px}
+.section h2{font-size:18px;margin-bottom:12px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.card{border:1px solid #eee;border-radius:10px;padding:10px;text-align:center;background:#fafafa}
+.card img{width:100%;height:110px;object-fit:contain;background:#fff;border-radius:8px}
+.card p{margin-top:6px;font-size:13px}
+.productos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
+.prod{border:1px solid #ddd;border-radius:10px;overflow:hidden;background:#fff}
+.prod img{width:100%;height:170px;object-fit:cover}
+.prod-info{padding:10px}
+.prod-info h4{font-size:14px}
+.prod-info.price{font-weight:bold;display:block;margin:5px 0}
+.prod-info button{width:100%;background:#111;color:#fff;border:none;padding:8px;border-radius:6px;cursor:pointer;font-size:13px}
+.detalle{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.detalle{grid-template-columns:1fr}}
+.detalle img{width:100%;max-height:400px;object-fit:contain;background:#fff;border-radius:10px}
+.btn-black{width:100%;background:#111;color:#fff;padding:10px;border:none;border-radius:6px;margin-top:8px;cursor:pointer}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+.feat{border:1px solid #ddd;padding:10px;border-radius:8px;text-align:center;font-size:12px}
+.carrito{display:grid;grid-template-columns:2fr 1fr;gap:15px;margin-top:20px}
+@media(max-width:700px){.carrito{grid-template-columns:1fr}}
+.resumen{border:1px solid #ddd;border-radius:10px;padding:12px;background:#fafafa}
+footer{background:#111;color:#fff;text-align:center;padding:15px;margin-top:20px;font-size:13px}
+</style>
 </head>
-
 <body>
-
 <header>
-    <div class="contenedor header">
-
-        <div class="logo">
-            MI TIENDA
-        </div>
-
-        <input 
-            type="text" 
-            id="buscador"
-            class="buscador"
-            placeholder="Buscar productos..."
-        >
-
-        <div class="cuenta">
-            Mi cuenta
-        </div>
-
-    </div>
-
-    <nav>
-        <div class="contenedor">
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#categorias">Categorías</a></li>
-                <li><a href="#productos">Ofertas</a></li>
-                <li><a href="#carrito">Mis compras</a></li>
-                <li>
-                    <a href="#carrito">
-                        Carrito (<span id="contadorCarrito">0</span>)
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<div class="logo">Mi Tienda</div>
+<nav>
+<a href="#">Mi tienda</a><a href="#">Categorías</a><a href="#">Ofertas</a><a href="#">Mis compras</a><a href="#">Contacto</a>
+</nav>
+<div>🛒 <span id="cart-count">0</span></div>
 </header>
 
-
-<main>
-
-    <!-- INICIO -->
-    <section id="inicio" class="contenedor hero">
-
-        <div class="hero-text">
-            <h1>Encuentra tu estilo</h1>
-
-            <p>
-                Encuentra ropa, accesorios y productos
-                para todos los estilos.
-            </p>
-
-            <a href="#productos" class="boton">
-                Ver productos
-            </a>
-        </div>
-
-        <div class="imagen">
-            <!-- CAMBIA ESTA DIRECCIÓN -->
-            <img 
-                src="lojo.jpg"
-                alt="Imagen principal"
-            >
-        </div>
-
-    </section>
-
-
-    <!-- CATEGORÍAS -->
-    <section id="categorias" class="contenedor">
-
-        <h2 class="titulo">Categorías</h2>
-
-        <div class="categorias">
-
-            <div class="categoria">
-                <div class="icono">
-                    <img 
-                        src="camisas.jpg"
-                        alt="Camisas"
-                    >
-                </div>
-                <h3>Camisas</h3>
-            </div>
-
-            <div class="categoria">
-                <div class="icono">
-                    <img 
-                        src="pantalones.jpg"
-                        alt="Pantalones"
-                    >
-                </div>
-                <h3>Pantalones</h3>
-            </div>
-
-            <div class="categoria">
-                <div class="icono">
-                    <img 
-                        src="zapatos.jpg"
-                        alt="Zapatos"
-                    >
-                </div>
-                <h3>Zapatos</h3>
-            </div>
-
-            <div class="categoria">
-                <div class="icono">
-                    <img 
-                        src="accesorios.jpg"
-                        alt="Accesorios"
-                    >
-                </div>
-                <h3>Accesorios</h3>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PRODUCTOS -->
-    <section id="productos" class="contenedor">
-
-        <h2 class="titulo">Productos destacados</h2>
-
-        <div class="productos" id="listaProductos">
-
-
-            <!-- PRODUCTO 1 -->
-            <article 
-                class="producto"
-                data-nombre="Playera básica"
-            >
-
-                <div class="producto-img">
-                    <img 
-                        src="basica.jpg"
-                        alt="Playera básica"
-                    >
-                </div>
-
-                <h3>Playera básica</h3>
-
-                <p>Playera de algodón.</p>
-
-                <div class="precio">
-                    $250
-                </div>
-
-                <button 
-                    class="verProducto"
-                    data-producto="Playera básica"
-                    data-precio="250"
-                >
-                    Ver producto
-                </button>
-
-            </article>
-
-
-            <!-- PRODUCTO 2 -->
-            <article 
-                class="producto"
-                data-nombre="Pantalón de mezclilla"
-            >
-
-                <div class="producto-img">
-                    <img 
-                        src="mezcliya.jpg"
-                        alt="Pantalón de mezclilla"
-                    >
-                </div>
-
-                <h3>Pantalón de mezclilla</h3>
-
-                <p>Pantalón de mezclilla clásico.</p>
-
-                <div class="precio">
-                    $500
-                </div>
-
-                <button 
-                    class="verProducto"
-                    data-producto="Pantalón de mezclilla"
-                    data-precio="500"
-                >
-                    Ver producto
-                </button>
-
-            </article>
-
-
-            <!-- PRODUCTO 3 -->
-            <article 
-                class="producto"
-                data-nombre="Sudadera"
-            >
-
-                <div class="producto-img">
-                    <img 
-                        src="sudaderas.jpg"
-                        alt="Sudadera"
-                    >
-                </div>
-
-                <h3>Sudadera</h3>
-
-                <p>Sudadera cómoda para cualquier ocasión.</p>
-
-                <div class="precio">
-                    $450
-                </div>
-
-                <button 
-                    class="verProducto"
-                    data-producto="Sudadera"
-                    data-precio="450"
-                >
-                    Ver producto
-                </button>
-
-            </article>
-
-
-            <!-- PRODUCTO 4 -->
-            <article 
-                class="producto"
-                data-nombre="Tenis deportivos"
-            >
-
-                <div class="producto-img">
-                    <img 
-                        src="tenis.jpg"
-                        alt="Tenis deportivos"
-                    >
-                </div>
-
-                <h3>Tenis deportivos</h3>
-
-                <p>Tenis para uso diario.</p>
-
-                <div class="precio">
-                    $1500
-                </div>
-
-                <button 
-                    class="verProducto"
-                    data-producto="Tenis deportivos"
-                    data-precio="1500"
-                >
-                    Ver producto
-                </button>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- DETALLE DEL PRODUCTO -->
-    <section id="detalle" class="contenedor detalle">
-
-        <div class="detalle-img">
-
-            <img 
-                id="imagenDetalle"
-                src="https://TU-DIRECCION-PLAYERA.jpg"
-                alt="Producto seleccionado"
-            >
-
-        </div>
-
-
-        <div class="detalle-info">
-
-            <h2 id="detalleTitulo">
-                Playera básica
-            </h2>
-
-            <p>
-                ⭐⭐⭐⭐⭐
-            </p>
-
-            <div 
-                class="precio-grande"
-                id="detallePrecio"
-            >
-                $250
-            </div>
-
-            <p id="detalleDescripcion">
-                Playera cómoda y de buena calidad
-                para uso diario.
-            </p>
-
-
-            <div class="opciones">
-
-                <label>
-                    Color:
-                </label>
-
-                <select id="color">
-
-                    <option>Negro</option>
-                    <option>Blanco</option>
-                    <option>Azul</option>
-
-                </select>
-
-
-                <label>
-                    Talla:
-                </label>
-
-                <select id="talla">
-
-                    <option>CH</option>
-                    <option>M</option>
-                    <option>G</option>
-                    <option>XL</option>
-
-                </select>
-
-            </div>
-
-
-            <button 
-                id="agregarCarrito"
-                class="carrito-btn"
-            >
-                Agregar al carrito
-            </button>
-
-            <p>
-                ❤️ Agregar a favoritos
-            </p>
-
-            <p>
-                🚚 Envío disponible
-            </p>
-
-            <p>
-                🔒 Compra protegida
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- INFORMACIÓN -->
-    <section class="contenedor info">
-
-        <div class="info-box">
-            <h3>🚚 Envío</h3>
-            <p>Envíos a todo México.</p>
-        </div>
-
-        <div class="info-box">
-            <h3>🔒 Compra segura</h3>
-            <p>Compra protegida.</p>
-        </div>
-
-        <div class="info-box">
-            <h3>💳 Pago seguro</h3>
-            <p>Pago protegido.</p>
-        </div>
-
-    </section>
-
-
-    <!-- CARRITO -->
-    <section 
-        id="carrito"
-        class="contenedor carrito"
-    >
-
-        <div class="productos-carrito">
-
-            <h2>Carrito de compras</h2>
-
-            <div id="listaCarrito">
-
-                <p>
-                    Tu carrito está vacío.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="resumen">
-
-            <h2>Resumen</h2>
-
-            <div class="fila">
-                <span>Subtotal:</span>
-                <span id="subtotal">$0</span>
-            </div>
-
-            <div class="fila">
-                <span>Envío:</span>
-                <span id="envio">$0</span>
-            </div>
-
-            <div class="fila total">
-                <span>Total:</span>
-                <span id="total">$0</span>
-            </div>
-
-            <button 
-                id="procederPago"
-                class="pagar"
-            >
-                Proceder al pago
-            </button>
-
-            <p class="seguro">
-                🔒 Compra segura y protegida.
-            </p>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <p>
-        Mi Tienda de Ropa © 2026
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
-
+<div class="hero">
+<div class="hero-left">
+<p style="font-size:12px;color:#888">Mi tienda / Categorías / Playera</p>
+<h1>Encuentra tu estilo</h1>
+<p style="font-size:13px;color:#666;margin-bottom:12px">Las mejores marcas y precios para renovar tu closet.</p>
+<button onclick="document.getElementById('categorias').scrollIntoView()">Ver productos</button>
+</div>
+<div class="hero-right">
+<img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600" alt="moda">
+</div>
+</div>
+
+<div class="section" id="categorias">
+<h2>Categorías</h2>
+<div class="grid4">
+<div class="card"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300"><p>Camisas</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=300"><p>Pantalones</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300"><p>Zapatos</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1523779105320-d1cd346ff52b?w=300"><p>Accesorios</p></div>
+</div>
+</div>
+
+<div class="section">
+<h2>Productos destacados</h2>
+<div class="productos" id="lista-productos"></div>
+</div>
+
+<div class="section" id="detalle-prod">
+<h2>Producto seleccionado</h2>
+<div class="detalle">
+<img id="detail-img" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600" alt="playera">
+<div>
+<h3 id="detail-name">Playera básica</h3>
+<p id="detail-price" style="font-weight:bold;margin:6px 0">$250</p>
+<p style="font-size:13px;color:#666">Playera de algodón, cómoda y suave, ideal para uso diario. Disponible en varios colores. Envío a todo México.</p>
+<button class="btn-black" onclick="agregarCarrito()">Agregar al carrito</button>
+<button class="btn-black" style="background:#fff;color:#111;border:1px solid #111" onclick="comprarAhora()">Comprar ahora</button>
+<div class="features">
+<div class="feat">🚚 Envío<br>Envío a todo México</div>
+<div class="feat">🔒 Compra segura<br>Compra protegida</div>
+<div class="feat">💳 Pago seguro<br>Pago protegido</div>
+</div>
+</div>
+</div>
+
+<div class="carrito">
+<div>
+<h3 style="font-size:15px;margin:10px 0">Carrito de compras</h3>
+<div id="cart-items" style="min-height:80px;border:1px dashed #ccc;border-radius:8px;padding:10px;font-size:13px">Tu carrito está vacío</div>
+</div>
+<div class="resumen">
+<h4>Resumen</h4>
+<p style="display:flex;justify-content:space-between;font-size:13px;margin:8px 0"><span>Subtotal:</span><span id="subtotal">$0</span></p>
+<p style="display:flex;justify-content:space-between;font-size:13px;margin:8px 0"><span>Envío:</span><span>$0</span></p>
+<p style="display:flex;justify-content:space-between;font-weight:bold;border-top:1px solid #ddd;padding-top:8px"><span>Total:</span><span id="total">$0</span></p>
+<button class="btn-black">Proceder al pago</button>
+<button class="btn-black" style="background:#eee;color:#111;margin-top:6px" onclick="vaciarCarrito()">Vaciar carrito</button>
+</div>
+</div>
+</div>
+
+<footer>Mi Tienda © 2026 - Todos los derechos reservados</footer>
+
+<script>
+const productos = [
+{ id:1, nombre:"Playera básica", precio:250, img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" },
+{ id:2, nombre:"Pantalón de mezclilla", precio:600, img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=400" },
+{ id:3, nombre:"Sudadera", precio:450, img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400" },
+{ id:4, nombre:"Tenis deportivos", precio:1500, img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" },
+];
+let carrito = [];
+let seleccionado = productos[0];
+function renderProductos(){
+ const cont = document.getElementById('lista-productos');
+ cont.innerHTML = productos.map(p=>`
+  <div class="prod">
+   <img src="${p.img}">
+   <div class="prod-info">
+    <h4>${p.nombre}</h4>
+    <span class="price">$${p.precio}</span>
+    <button onclick="verDetalle(${p.id})">Ver producto</button>
+   </div>
+  </div>`).join('');
+}
+function verDetalle(id){
+ seleccionado = productos.find(p=>p.id===id);
+ document.getElementById('detail-img').src = seleccionado.img;
+ document.getElementById('detail-name').textContent = seleccionado.nombre;
+ document.getElementById('detail-price').textContent = '$'+seleccionado.precio;
+ document.getElementById('detalle-prod').scrollIntoView({behavior:'smooth'});
+}
+function agregarCarrito(){
+ carrito.push(seleccionado);
+ actualizarCarrito();
+}
+function actualizarCarrito(){
+ document.getElementById('cart-count').textContent = carrito.length;
+ const div = document.getElementById('cart-items');
+ if(carrito.length===0){ div.innerHTML='Tu carrito está vacío'; }
+ else{
+  div.innerHTML = carrito.map((p,i)=>`<div style="display:flex;justify-content:space-between;margin:4px 0">${p.nombre} - $${p.precio} <span style="cursor:pointer;color:red" onclick="carrito.splice(${i},1);actualizarCarrito()">x</span></div>`).join('');
+ }
+ let sub = carrito.reduce((a,b)=>a+b.precio,0);
+ document.getElementById('subtotal').textContent = '$'+sub;
+ document.getElementById('total').textContent = '$'+sub;
+}
+function vaciarCarrito(){ carrito=[]; actualizarCarrito(); }
+function comprarAhora(){ agregarCarrito(); alert('Producto agregado. Total: $'+carrito.reduce((a,b)=>a+b.precio,0)); }
+renderProductos();
+</script>
 </body>
 </html>
